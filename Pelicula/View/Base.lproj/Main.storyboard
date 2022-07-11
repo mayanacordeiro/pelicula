@@ -8,11 +8,16 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.otf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Featured-->
         <scene sceneID="rVZ-7U-029">
             <objects>
-                <viewController title="Featured" id="ZBO-yi-Fad" customClass="ViewController" customModule="Pelicula" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Featured" id="ZBO-yi-Fad" customClass="FeaturedViewController" customModule="Pelicula" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EA8-Bp-JAB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1202"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,7 +39,7 @@
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Popular" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ts-Hc-tQm">
                                                                         <rect key="frame" x="0.0" y="0.0" width="313" height="50"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -68,7 +73,7 @@
                                                             <inset key="sectionInset" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="VDa-jj-L7A">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="popularCell" id="VDa-jj-L7A" customClass="PopularCollectionViewCell" customModule="Pelicula" customModuleProvider="target">
                                                                 <rect key="frame" x="8" y="0.0" width="200" height="140"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="W1g-1a-08j">
@@ -78,7 +83,7 @@
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tUD-9F-Vs5">
                                                                             <rect key="frame" x="8" y="8" width="184" height="99.5"/>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvL-ZD-L3F" userLabel="&lt;titleLabel&gt;">
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;titleLabel&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvL-ZD-L3F" userLabel="&lt;titleLabel&gt;">
                                                                             <rect key="frame" x="8" y="111.5" width="184" height="20.5"/>
                                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                             <nil key="textColor"/>
@@ -96,6 +101,10 @@
                                                                     </constraints>
                                                                 </collectionViewCellContentView>
                                                                 <size key="customSize" width="200" height="140"/>
+                                                                <connections>
+                                                                    <outlet property="image" destination="tUD-9F-Vs5" id="t4B-CJ-oqA"/>
+                                                                    <outlet property="titleLabel" destination="tvL-ZD-L3F" id="pxL-vr-tQk"/>
+                                                                </connections>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
@@ -113,7 +122,7 @@
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Now Playing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7f-5U-5hm">
                                                                         <rect key="frame" x="0.0" y="0.0" width="313" height="50"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -147,7 +156,7 @@
                                                             <inset key="sectionInset" minX="16" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="LaT-yk-FVz">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="LaT-yk-FVz" customClass="NowPlayingCollectionViewCell" customModule="Pelicula" customModuleProvider="target">
                                                                 <rect key="frame" x="16" y="0.0" width="251" height="114"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="itQ-uK-H17">
@@ -193,6 +202,11 @@
                                                                         <constraint firstItem="CYI-Qx-Up9" firstAttribute="centerY" secondItem="itQ-uK-H17" secondAttribute="centerY" id="lLV-Oh-ceW"/>
                                                                     </constraints>
                                                                 </collectionViewCellContentView>
+                                                                <connections>
+                                                                    <outlet property="dateLabel" destination="Ttc-cD-Z97" id="Me9-Wd-Tn1"/>
+                                                                    <outlet property="image" destination="CYI-Qx-Up9" id="4NN-mj-CKf"/>
+                                                                    <outlet property="titleLabel" destination="HoW-Zo-JAG" id="Ong-a5-fQc"/>
+                                                                </connections>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
@@ -209,7 +223,7 @@
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Upcoming" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IB3-bs-5rb">
                                                                         <rect key="frame" x="0.0" y="0.0" width="146" height="50"/>
-                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="28"/>
+                                                                        <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="28"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -236,20 +250,45 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="318" id="zwc-EM-vbh"/>
                                                         </constraints>
-                                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="SyF-am-0yG">
-                                                            <size key="itemSize" width="128" height="128"/>
+                                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="SyF-am-0yG">
+                                                            <size key="itemSize" width="200" height="299"/>
                                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                            <inset key="sectionInset" minX="8" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cv5-b4-2nC">
-                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="cv5-b4-2nC" customClass="UpcomingCollectionViewCell" customModule="Pelicula" customModuleProvider="target">
+                                                                <rect key="frame" x="8" y="0.0" width="200" height="299"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="chh-wU-H9R">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="299"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
+                                                                    <subviews>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ql-Wh-3Oh">
+                                                                            <rect key="frame" x="8" y="8" width="184" height="258.5"/>
+                                                                        </imageView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;titleLabel&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4k8-03-nyM" userLabel="&lt;titleLabel&gt;">
+                                                                            <rect key="frame" x="8" y="270.5" width="184" height="20.5"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="trailing" secondItem="4k8-03-nyM" secondAttribute="trailing" constant="8" id="C22-rs-IO9"/>
+                                                                        <constraint firstItem="4k8-03-nyM" firstAttribute="top" secondItem="7ql-Wh-3Oh" secondAttribute="bottom" constant="4" id="HZG-KH-V9j"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="7ql-Wh-3Oh" secondAttribute="trailing" constant="8" id="Mzr-ZI-YRc"/>
+                                                                        <constraint firstItem="7ql-Wh-3Oh" firstAttribute="leading" secondItem="chh-wU-H9R" secondAttribute="leading" constant="8" id="OQ5-Sf-xuU"/>
+                                                                        <constraint firstItem="4k8-03-nyM" firstAttribute="leading" secondItem="chh-wU-H9R" secondAttribute="leading" constant="8" id="WQ9-oA-dLv"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="4k8-03-nyM" secondAttribute="bottom" constant="8" id="gxt-0F-PeJ"/>
+                                                                        <constraint firstItem="7ql-Wh-3Oh" firstAttribute="top" secondItem="chh-wU-H9R" secondAttribute="top" constant="8" id="rjt-fU-AFm"/>
+                                                                    </constraints>
                                                                 </collectionViewCellContentView>
+                                                                <size key="customSize" width="200" height="299"/>
+                                                                <connections>
+                                                                    <outlet property="image" destination="7ql-Wh-3Oh" id="jUc-6N-twk"/>
+                                                                    <outlet property="titleLabel" destination="4k8-03-nyM" id="0pY-4u-7nG"/>
+                                                                </connections>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
@@ -280,6 +319,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Featured" id="OxH-nu-sPy"/>
                     <size key="freeformSize" width="414" height="1202"/>
+                    <connections>
+                        <outlet property="nowPlayingCollectionView" destination="cS6-Ih-4JM" id="zXj-1t-JPW"/>
+                        <outlet property="popularCollectionView" destination="3db-O8-Yj3" id="O5K-Ya-dRL"/>
+                        <outlet property="upcomingCollectionView" destination="uBI-h1-gDl" id="nly-YT-eOP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l54-nF-LH0" sceneMemberID="firstResponder"/>
             </objects>
