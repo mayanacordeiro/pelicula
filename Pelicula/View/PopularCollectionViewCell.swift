@@ -10,6 +10,5 @@ import UIKit
 class PopularCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var image: UIImageView!
-    
     @IBOutlet var titleLabel: UILabel!
 }
