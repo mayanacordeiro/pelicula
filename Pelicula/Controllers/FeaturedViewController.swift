@@ -7,10 +7,11 @@
 
 import UIKit
 
-class FeaturedViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class FeaturedViewController: UIViewController {
     
     let popularMovies = Movie.popularMovies()
     let nowPlayingMovies = Movie.nowPlayingMovies()
+    let upcomingMovies = Movie.upcomingMovies()
     
     @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet weak var nowPlayingCollectionView: UICollectionView!
@@ -24,6 +25,16 @@ class FeaturedViewController: UIViewController, UICollectionViewDataSource, UICo
         
         nowPlayingCollectionView.dataSource = self
         nowPlayingCollectionView.delegate = self
+        
+        upcomingCollectionView.dataSource = self
+        upcomingCollectionView.delegate = self
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailsViewController {
+            let movie = sender as? Movie
+            destination.movie = movie
+        }
     }
     
     
