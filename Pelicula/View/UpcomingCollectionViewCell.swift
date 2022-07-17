@@ -18,6 +18,6 @@ class UpcomingCollectionViewCell: UICollectionViewCell {
     func setup(title: String, image: UIImage, date: String){
         titleLabel.text = title
         imageView.image = image
-//        dateLabel.text = releasedat
+        dateLabel.text = date
     }
 }
