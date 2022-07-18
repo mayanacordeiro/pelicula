@@ -10,8 +10,15 @@ import UIKit
 class TrendingViewController: UIViewController {
     
     var trendingDayMovies: [Movie] = []
+    var trendingWeekMovies: [Movie] = []
     
     @IBOutlet var trendingTableView: UITableView!
+    @IBOutlet var trendingSegmented: UISegmentedControl!
+    
+
+    @IBAction func segmentedChanged(_ sender: Any) {
+        trendingTableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +31,14 @@ class TrendingViewController: UIViewController {
             self.trendingTableView.reloadData()
         }
         
+        Task {
+            self.trendingWeekMovies = await Movie.trendingWeekMoviesAPI()
+            self.trendingTableView.reloadData()
+
+        }
+        
     }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailsViewController {
