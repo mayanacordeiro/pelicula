@@ -55,8 +55,23 @@ class FeaturedViewController: UIViewController {
         if let destination = segue.destination as? DetailsViewController {
             let movie = sender as? Movie
             destination.movie = movie
+            
+        } else if let destination = segue.destination as? SeeAllViewController,
+            let button = sender as? UIButton {
+                if button == seeAllPopular {
+                    destination.movies = popularMovies
+                    destination.title = "Popular"
+                } else if button == seeAllNowPlaying {
+                    destination.movies = nowPlayingMovies
+                    destination.title = "Now Playing"
+                } else {
+                    destination.movies = upcomingMovies
+                    destination.title = "Upcoming"
+                }
+            }
+            
         }
     }
     
     
-}
+
