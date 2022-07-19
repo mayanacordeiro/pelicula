@@ -30,7 +30,7 @@ extension TrendingViewController: UITableViewDataSource {
             let movie = trendingDayMovies[indexPath.item]
             
             Task {
-                let imageData = await Movie.downloadImageData(withPath: movie.posterPath)
+                let imageData = await Movie.downloadImageData(withPath: (movie.posterPath ?? ""))
                 let image = UIImage(data: imageData) ?? UIImage()
                 
                 let year: String = "\(movie.releaseDate.prefix(4))"
@@ -39,7 +39,7 @@ extension TrendingViewController: UITableViewDataSource {
         case 1:
             let movie = trendingWeekMovies[indexPath.item]
             Task {
-                let imageData = await Movie.downloadImageData(withPath: movie.posterPath)
+                let imageData = await Movie.downloadImageData(withPath: (movie.posterPath ?? ""))
                 let image = UIImage(data: imageData) ?? UIImage()
                 
                 let year: String = "\(movie.releaseDate.prefix(4))"

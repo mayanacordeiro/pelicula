@@ -39,9 +39,10 @@ extension FeaturedViewController: UICollectionViewDataSource {
         let cell = popularCollectionView.dequeueReusableCell(withReuseIdentifier: PopularCollectionViewCell.cellIdentifier , for: indexPath) as? PopularCollectionViewCell
         
         let movie = popularMovies[indexPath.item]
+        
         cell?.setup(title: movie.title, image: UIImage())
         Task {
-            let imageData = await Movie.downloadImageData(withPath: movie.backdropPath)
+            let imageData = await Movie.downloadImageData(withPath: (movie.backdropPath ?? ""))
             let imagem = UIImage(data: imageData) ?? UIImage()
             cell?.setup(title: movie.title, image: imagem)
 
@@ -54,11 +55,15 @@ extension FeaturedViewController: UICollectionViewDataSource {
         let cell = nowPlayingCollectionView.dequeueReusableCell(withReuseIdentifier: NowPlayingCollectionViewCell.cellIdentifier , for: indexPath) as? NowPlayingCollectionViewCell
         
         let movie = nowPlayingMovies[indexPath.item]
+        let year: String = "\(movie.releaseDate.prefix(4))"
+       
+        cell?.setup(title: movie.title, image: UIImage(), year: year)
+        
         Task {
-            let imageData = await Movie.downloadImageData(withPath: movie.posterPath)
+            let imageData = await Movie.downloadImageData(withPath: (movie.posterPath ?? ""))
             let image = UIImage(data: imageData) ?? UIImage()
             
-            let year: String = "\(movie.releaseDate.prefix(4))"
+           
             cell?.setup(title: movie.title, image: image, year: year)
         }
 
@@ -72,7 +77,7 @@ extension FeaturedViewController: UICollectionViewDataSource {
         let movie = upcomingMovies[indexPath.item]
         
         Task {
-            let imageData = await Movie.downloadImageData(withPath: movie.posterPath)
+            let imageData = await Movie.downloadImageData(withPath: (movie.posterPath ?? ""))
             let image = UIImage(data: imageData) ?? UIImage()
             
             let date: String = "\(movie.releaseDate.suffix(4))"

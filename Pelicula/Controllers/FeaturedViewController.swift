@@ -16,6 +16,10 @@ class FeaturedViewController: UIViewController {
     @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet weak var nowPlayingCollectionView: UICollectionView!
     @IBOutlet weak var upcomingCollectionView: UICollectionView!
+    @IBOutlet var seeAllPopular: UIButton!
+    @IBOutlet var seeAllNowPlaying: UIButton!
+    @IBOutlet var seeAllUpcoming: UIButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

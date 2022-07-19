@@ -9,8 +9,19 @@ import UIKit
 
 extension TrendingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let movie: Movie = trendingDayMovies[indexPath.row] // let movie: Movie = trendingWeekMovies[indexPath.row]
-        self.performSegue(withIdentifier: "detailsSegue", sender: movie)
+        
+        let movieDay: Movie = trendingDayMovies[indexPath.row]
+        let movieWeek: Movie = trendingWeekMovies[indexPath.row]
+        switch trendingSegmented.selectedSegmentIndex{
+        case 0:
+            return self.performSegue(withIdentifier: "detailsSegue", sender: movieDay)
+        case 1:
+            return self.performSegue(withIdentifier: "detailsSegue", sender: movieWeek)
+        default:
+            break
+            
+        }
+        
     }
     
 
