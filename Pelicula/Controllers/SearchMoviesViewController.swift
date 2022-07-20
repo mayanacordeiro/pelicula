@@ -19,7 +19,7 @@ class SearchMoviesViewController: UIViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.prefersLargeTitles = true
+//        navigationController?.navigationBar.prefersLargeTitles = true
         //        navigationItem.searchController = self
         searchMoviesCollectionView.dataSource = self
         searchMoviesCollectionView.delegate = self

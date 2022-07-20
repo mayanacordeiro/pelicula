@@ -74,13 +74,17 @@ extension FeaturedViewController: UICollectionViewDataSource {
     fileprivate func makeUpcomingCell(_ indexPath: IndexPath) -> UICollectionViewCell {
         let cell = upcomingCollectionView.dequeueReusableCell(withReuseIdentifier: UpcomingCollectionViewCell.cellIdentifier, for: indexPath) as? UpcomingCollectionViewCell
         
+        
         let movie = upcomingMovies[indexPath.item]
+        
+        let date: String = "\(movie.releaseDate.prefix(4))"
+        cell?.setup(title: movie.title, image: UIImage(), date: date)
         
         Task {
             let imageData = await Movie.downloadImageData(withPath: (movie.posterPath ?? ""))
             let image = UIImage(data: imageData) ?? UIImage()
             
-            let date: String = "\(movie.releaseDate.suffix(4))"
+//            let date: String = "\(movie.releaseDate.suffix(4))"
             cell?.setup(title: movie.title, image: image, date: date)
         }
         
