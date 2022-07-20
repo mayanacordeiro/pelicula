@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchMoviesViewController: UIViewController, UISearchBarDelegate{//, UISearchResultsUpdating {
+class SearchMoviesViewController: UIViewController, UISearchBarDelegate {
     
     
     @IBOutlet var searchBar: UISearchBar!
@@ -24,6 +24,7 @@ class SearchMoviesViewController: UIViewController, UISearchBarDelegate{//, UISe
         searchMoviesCollectionView.dataSource = self
         searchMoviesCollectionView.delegate = self
         searchBar.delegate = self
+       
         
     }
     
@@ -46,6 +47,12 @@ class SearchMoviesViewController: UIViewController, UISearchBarDelegate{//, UISe
 
 extension SearchMoviesViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let movie = searchMovies[indexPath.item]
+        performSegue(withIdentifier: "detailsSegue", sender: movie)
+        
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return searchMovies.count
@@ -66,6 +73,13 @@ extension SearchMoviesViewController: UICollectionViewDataSource, UICollectionVi
         
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailsViewController {
+            let movie = sender as? Movie
+            destination.movie = movie
+        }
 }
 
 
+}
