@@ -10,7 +10,7 @@ Foi utilizado storyboard para criar a UI.
 
 Projeto criado em um challenge individual da Apple Developer Academy | UFPE. 
 
-Proposta: aprender sobre o uso de constraints no sotryboard, consumo de API e uso de versionamento de código. 
+Proposta: aprender sobre o uso de constraints no storyboard, consumo de API, arquitetura MVC e versionamento de código. 
 
 ## Status
 
